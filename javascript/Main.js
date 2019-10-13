@@ -17,7 +17,7 @@ const main_presentation = () => "= = = = Bem-vindo(a) ao EconomizaP2 = = = = \n"
   "3 - Imprimir Balanço \n" +
   "4 - Sair \n";
 
-(main = () => {
+const main = () => {
   readLine.question(main_presentation(), output => {
     switch (parseInt(output)) {
       case 1:
@@ -32,7 +32,9 @@ const main_presentation = () => "= = = = Bem-vindo(a) ao EconomizaP2 = = = = \n"
       case 4:
         process.exit();
       default:
-        main();
+        return main();
     }
   });
-})();
+};
+
+main();
