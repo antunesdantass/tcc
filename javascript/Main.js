@@ -1,7 +1,7 @@
 'use strict';
 import checkout from './Checkout.js';
-// import sale from './Sale.js';
-// import product from './Product.js';
+import sale from './Sale.js';
+import product from './Product.js';
 
 const readline = require('readline');
 
@@ -21,10 +21,10 @@ const main = () => {
   readLine.question(main_presentation(), output => {
     switch (parseInt(output)) {
       case 1:
-        // product();
+        product();
         break;
       case 2:
-        // sale();
+        sale();
         break;
       case 3:
         checkout();
@@ -32,8 +32,10 @@ const main = () => {
       case 4:
         process.exit();
       default:
-        return main();
+        return main();      
     }
+
+    main();
   });
 };
 
