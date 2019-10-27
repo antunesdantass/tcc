@@ -3,12 +3,7 @@ import checkout from './Checkout.js';
 import sale from './Sale.js';
 import product from './Product.js';
 
-const readline = require('readline');
-
-const readLine = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+const readLine = require('readline-sync');
 
 const main_presentation = () => "= = = = Bem-vindo(a) ao EconomizaP2 = = = = \n" +
   "Digite a opção desejada: \n" +
@@ -17,26 +12,23 @@ const main_presentation = () => "= = = = Bem-vindo(a) ao EconomizaP2 = = = = \n"
   "3 - Imprimir Balanço \n" +
   "4 - Sair \n";
 
-const main = () => {
-  readLine.question(main_presentation(), output => {
-    switch (parseInt(output)) {
-      case 1:
-        product();
-        break;
-      case 2:
-        sale();
-        break;
-      case 3:
-        checkout();
-        break;
-      case 4:
-        process.exit();
-      default:
-        return main();      
-    }
-
-    main();
-  });
+const main = produtosCadastrados => {
+  const opcao = readLine.question(main_presentation())
+  switch (parseInt(opcao)) {
+    case 1:
+      main(product(produtosCadastrados));
+      break;
+    case 2:
+      sale();
+      break;
+    case 3:
+      checkout();
+      break;
+    case 4:
+      process.exit();
+    default:
+      return main(produtosCadastrados);      
+  };
 };
 
-main();
+main([]);
