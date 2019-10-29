@@ -15,13 +15,17 @@ module Main where
 
   main :: IO ()
   main = do
+    executionLoop []
+  
+  executionLoop :: [Product] -> IO()
+  executionLoop products = do
     putStrLn initial_menu
     option <- getLine
-    runTask (read option :: Integer)
+    runTask products (read option :: Integer)
 
-  runTask :: Integer -> IO ()
-  runTask 1 = createProduct
-  runTask 2 = sell
-  runTask 3 = checkout
-  runTask 4 = putStrLn ""
-  runTask _ = main
+  runTask :: [Product] -> Integer -> IO ()
+  runTask products 1 = executionLoop (createProduct products)
+  runTask products 2 = sell
+  runTask products 3 = checkout
+  runTask products 4 = putStrLn ""
+  runTask products _ = executionLoop products
