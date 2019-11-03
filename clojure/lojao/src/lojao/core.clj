@@ -17,18 +17,18 @@ Digite a opção desejada:
 
 Opção:")
 
-(defmulti goto-choice identity)
-(defmethod goto-choice "1" [_] (create-product))
-(defmethod goto-choice "2" [_] (sell-product))
-(defmethod goto-choice "3" [_] (checkout))
-(defmethod goto-choice "4" [_] (System/exit 0))
+(defmulti goto-choice (fn [products choice] choice))
+(defmethod goto-choice "1" [ products _ ] (create-product products))
+(defmethod goto-choice "2" [ products _ ] (sell-product))
+(defmethod goto-choice "3" [ products _ ] (checkout))
+(defmethod goto-choice "4" [ products _ ] (System/exit 0))
 
-(defn app []
+(defn app [products]
   (println (main-presentation))
-  (goto-choice (read-line))
-  (app))
+  (goto-choice products (read-line))
+  (app products))
 
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
-  (app))
+  (app (list)))

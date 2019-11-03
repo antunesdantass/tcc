@@ -1,4 +1,4 @@
 (ns lojao.sell)
 
-(defn sell-product []
+(defn sell-product [products]
   (println "implementação futura"))
