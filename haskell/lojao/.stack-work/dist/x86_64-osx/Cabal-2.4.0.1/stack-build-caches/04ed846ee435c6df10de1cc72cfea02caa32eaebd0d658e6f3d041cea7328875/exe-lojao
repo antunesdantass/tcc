@@ -10,15 +10,11 @@
   hash: 5a197421b5cec9c5eb88b757c6b2f90cc7b5db714c8ef5c2152917ed9762302b
   size: 90
   modtime: 1567173406
-/Users/antunesdantas/Documents/tcc/haskell/lojao/src/Product.hs:
-  hash: c71a19484fc5953259c40426282c621e29f75ec4f70e54fe5ddd1a137a162f48
-  size: 1368
-  modtime: 1572310443
 /Users/antunesdantas/Documents/tcc/haskell/lojao/lojao.cabal:
   hash: 9f942d9d3147107817878cc70ca00d5cf654ad9fefe62cad5cdf2e54f519684b
   size: 591
   modtime: 1567168355
 /Users/antunesdantas/Documents/tcc/haskell/lojao/src/Main.hs:
-  hash: d058def5c7a880391ceb30c6e78e599f133a417f5365b16f5b24176605554cb5
-  size: 796
-  modtime: 1572222363
+  hash: 50929db06df874bd859dd7043605a63a33410a0d2fa582819d2f1320841729d5
+  size: 1468
+  modtime: 1572803822
