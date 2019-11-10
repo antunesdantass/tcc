@@ -12,17 +12,18 @@ const main_presentation = () => "= = = = Bem-vindo(a) ao EconomizaP2 = = = = \n"
   "3 - Imprimir Balanço \n" +
   "4 - Sair \n";
 
-const main = produtosCadastrados => {
+const main = (produtosCadastrados, totalArrecadado) => {
   const opcao = readLine.question(main_presentation())
   switch (parseInt(opcao)) {
     case 1:
-      main(product(produtosCadastrados));
+      main(product(produtosCadastrados), totalArrecadado);
       break;
     case 2:
-      sale();
+      main(produtosCadastrados, sale(produtosCadastrados, totalArrecadado));
       break;
     case 3:
-      checkout();
+      checkout(produtosCadastrados, totalArrecadado);
+      main(produtosCadastrados, totalArrecadado);
       break;
     case 4:
       process.exit();
@@ -31,4 +32,4 @@ const main = produtosCadastrados => {
   };
 };
 
-main([]);
+main([], 0);

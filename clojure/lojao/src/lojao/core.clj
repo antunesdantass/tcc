@@ -26,7 +26,10 @@ Opção:")
   (def updated-cart (sell-product products cart))
   (println (main-presentation))
   (goto-choice products updated-cart (read-line)))
-(defmethod goto-choice "3" [ products cart _ ] (checkout))
+(defmethod goto-choice "3" [ products cart _ ] 
+  (checkout products cart)
+  (println (main-presentation))
+  (goto-choice products updated-cart (read-line)))
 (defmethod goto-choice "4" [ products cart _ ] (System/exit 0))
 (defmethod goto-choice :default [ products _ ] 
   (println (main-presentation))

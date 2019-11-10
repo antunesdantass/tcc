@@ -7,7 +7,7 @@ const inserirNome = produto => {
   }
 
 const inserirPreco = produto => {
-  const preco = readLine.question("Digite o preço unitário do produto: ");
+  const preco = parseFloat(readLine.question("Digite o preço unitário do produto: "));
   return Object.assign({ preco }, produto);
 }
 
