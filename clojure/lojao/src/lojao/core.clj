@@ -17,18 +17,25 @@ Digite a opção desejada:
 
 Opção:")
 
-(defmulti goto-choice (fn [products choice] choice))
-(defmethod goto-choice "1" [ products _ ] (create-product products))
-(defmethod goto-choice "2" [ products _ ] (sell-product))
-(defmethod goto-choice "3" [ products _ ] (checkout))
-(defmethod goto-choice "4" [ products _ ] (System/exit 0))
-
-(defn app [products]
+(defmulti goto-choice (fn [products cart choice] choice))
+(defmethod goto-choice "1" [ products cart _ ] 
+  (def updated-products (create-product products))
   (println (main-presentation))
-  (goto-choice products (read-line))
-  (app products))
+  (goto-choice updated-products cart (read-line)))
+(defmethod goto-choice "2" [ products cart _ ] 
+  (def updated-cart (sell-product products cart))
+  (println (main-presentation))
+  (goto-choice products updated-cart (read-line)))
+(defmethod goto-choice "3" [ products cart _ ] (checkout))
+(defmethod goto-choice "4" [ products cart _ ] (System/exit 0))
+(defmethod goto-choice :default [ products _ ] 
+  (println (main-presentation))
+  (goto-choice products (read-line)))
+
+(defn app [products cart]
+  (println (main-presentation))
+  (goto-choice products cart (read-line)))
 
 (defn -main
-  "I don't do a whole lot ... yet."
   [& args]
-  (app (list)))
+  (app (list) 0))
